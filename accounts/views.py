@@ -73,7 +73,7 @@ def edit_student(request):
             su_form.save()
             sp_form.save()
             messages.success(request, f'Your account has been updated!')
-            return render(request,'accounts/student_profile.html')
+            return redirect('home')
 
     else:
         su_form = UserUpdateForm(instance=request.user)
@@ -170,7 +170,7 @@ def edit_teacher(request):
             tu_form.save()
             tp_form.save()
             messages.success(request, f'Your account has been updated!')
-            return render(request, 'accounts/teacher_profile.html')
+            return redirect('home')
     else:
         tu_form = UserUpdateForm(instance=request.user)
         tp_form = TeacherUpdateForm(instance=request.user.teacher)

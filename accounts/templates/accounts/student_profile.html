@@ -24,17 +24,24 @@
               {% if user1.email %}
             <p class="card-text">Email : {{ user1.email }}</p>
               {% endif %}
-            {% if user1.Gender %}
-            <p class="card-text">Gender : {{ user1.Gender }}</p>
+            {% if user1.student.Gender %}
+            <p class="card-text">Gender : {{ user1.student.Gender }}</p>
               {% endif %}
             <p class="card-text">Role : Student</p>
-            {% if user1.years_in_academy %}
-            <p class="card-text">Years in academy : {{ user1.years_in_academy }}</p>
+            {% if user1.student.years_in_academy %}
+            <p class="card-text">Years in academy : {{ user1.student.years_in_academy }}</p>
               {% endif %}
-            {% if user1.description %}
-            <h3 class="card-text">Bio: </h4>
-              <h5>{{ user1.description }}</h5>
-              {% endif %}
+
+              {% if user1.student.study_choice %}
+              <p class="card-text">Study : {{user1.student.study_choice}}</p>
+                {% endif %}
+                {% if user1.student.years_in_academy %}
+                <p class="card-text">Years In Academy : {{user1.student.years_in_academy}}</p>
+                  {% endif %}
+                  {% if user1.student.description %}
+                  <h3 class="card-text">Bio: </h4>
+                    <h5>{{ user1.student.description }}</h5>
+                    {% endif %}
             <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
           </div>
