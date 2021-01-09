@@ -39,7 +39,7 @@
 
               <!-- =====================Assign as Student Of This Teacher Button===================== -->
               {% if request.user in lst_t %}
-              <button type="button" name="button">un assign</button>
+              <button type="button" name="button">Already Signed</button>
               {% elif user.groups.all.0.name == 'studentg' %}
               <form action="" method="POST" >
                 {%csrf_token%}
@@ -50,15 +50,15 @@
                <!-- =====================Report Button===================== -->
 
               {% if request.user in lst_t %}
-              {% if report_st %}
-            {% for st in report_st %}
-              {%  if request.user.username != st.user.username %}
-              <a href="{% url 'accounts:report' user1.username %}"><button type="button" name="button">Add Review</button></a>
-              {% endif %}
-            {% endfor %}
-            {% else %}
+                {% if report_st %}
+                  {% for st in report_st %}
+                    {%  if request.user.username != st.user.username %}
+                      <a href="{% url 'accounts:report' user1.username %}"><button type="button" name="button">Add Review</button></a>
+                    {% endif %}
+                  {% endfor %}
+                {% else %}
             <a href="{% url 'accounts:report' user1.username %}"><button type="button" name="button">Add Review</button></a>
-            {% endif %}
+              {% endif %}
             {% endif %}
 
           </div>
