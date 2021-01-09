@@ -49,7 +49,16 @@
 
                <!-- =====================Report Button===================== -->
 
-              {% if request.user in lst_t %}
+
+               {% if request.user in lst_t %}
+                  {% if request.user.username in report_st2 %}
+
+                  {% else %}
+                      <a href="{% url 'accounts:report' user1.username %}"><button type="button" name="button">Add Review</button></a>
+                  {% endif %}
+               {% endif %}
+
+              <!-- {% if request.user in lst_t %}
                 {% if report_st %}
                   {% for st in report_st %}
                     {%  if request.user.username != st.user.username %}
@@ -59,7 +68,7 @@
                 {% else %}
             <a href="{% url 'accounts:report' user1.username %}"><button type="button" name="button">Add Review</button></a>
               {% endif %}
-            {% endif %}
+            {% endif %} -->
 
           </div>
         </div>

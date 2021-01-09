@@ -27,7 +27,7 @@ def change_password(request):
             user = form.save()
             update_session_auth_hash(request, user)  # Important!
             messages.success(request, 'Your password was successfully updated!')
-            return render(request, 'accounts/change_password.html',{'form': form})
+            return render(request, 'home',{'form': form})
         else:
             messages.error(request, 'Please correct the error below.')
     else:
@@ -117,6 +117,7 @@ def teacher_profile(request,username):
     ss = Report.objects.order_by('teacher_id')
     report_lst = []
     report_st = []
+    report_st2 = []
     print(ss)
     for i in ss:
         print('type = ',type(Student.objects.get(user = i.user)))
@@ -124,6 +125,7 @@ def teacher_profile(request,username):
         if(str(i.teacher) == user1.username):
             report_lst.append(i)
             report_st.append(Student.objects.get(user = i.user))
+            report_st2.append(Student.objects.get(user = i.user).user.username)
 
 # =======================================================================
 
@@ -152,6 +154,8 @@ def teacher_profile(request,username):
         context['report_lst'] =  report_lst
     if len(report_st) != 0:
         context['report_st'] = report_st
+    if len(report_st2) != 0:
+        context['report_st2'] = report_st2
     print(context)
     return render(request, 'accounts/teacher_profile.html', context)
 
