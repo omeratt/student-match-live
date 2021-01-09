@@ -53,11 +53,11 @@
               {% if report_st %}
             {% for st in report_st %}
               {%  if request.user.username != st.user.username %}
-              <a href="{% url 'accounts:report' user1.username %}"><button type="button" name="button">report</button></a>
+              <a href="{% url 'accounts:report' user1.username %}"><button type="button" name="button">Add Review</button></a>
               {% endif %}
             {% endfor %}
             {% else %}
-            <a href="{% url 'accounts:report' user1.username %}"><button type="button" name="button">report</button></a>
+            <a href="{% url 'accounts:report' user1.username %}"><button type="button" name="button">Add Review</button></a>
             {% endif %}
             {% endif %}
 

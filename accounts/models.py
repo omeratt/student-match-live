@@ -33,8 +33,8 @@ YEAR_IN_SCHOOL_CHOICES = (
         )
 
 RATE_CHOICES = [
-	(1, '1 - Kill Him'),
-	(2, '2 - Send to Hadas'),
+	(1, '1 - Bad'),
+	(2, '2 - Average'),
 	(3, '3 - Good'),
 	(4, '4 - Very Good'),
 	(5, '5 - Perfect')
