@@ -28,7 +28,7 @@ SECRET_KEY = '352wd*6(tihrz%_#o@fm+haq4n5g8cva70n7c30)y42urcgu-^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['student-match-social.herokuapp.com' , '127.0.0.1:8000']
+ALLOWED_HOSTS = ['student-match-social.herokuapp.com' , '127.0.0.1']
 
 
 # Application definition
