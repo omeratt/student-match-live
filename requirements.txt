@@ -12,7 +12,7 @@ Django==3.0.3
 django-allauth==0.44.0
 django-bootstrap-form==3.4
 django-bootstrap3==14.2.0
--e git+https://github.com/Eliraas1/Student-Match.git@c97cb644915a131903cf89693ae8775a2958d273#egg=django_bootstrap4&subdirectory=student_admin/django-bootstrap4-0.0.5
+django-bootstrap4==4-0.0.5
 django-braces==1.14.0
 django-crispy-forms==1.10.0
 django-filter==2.4.0
