@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<div class="content-section">
+  <img class="img-circle" width="200" src="{{ user.teacher.Profile_pic.url }}">
+  <div class="media">
+
+
+    <div class="media-body">
+      <h2 class="account-heading">User Name: {{ user.username }}</h2>
+      <p class="text-secondary">Email: {{ user.email }}</p>
+    </div>
+  </div>
+
+  <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <fieldset class="form-group-profile" >
+          <legend class="border-bottom mb-4" style = "color :#979EAA; width:455px;">Profile Info</legend>
+          {{ tu_form|crispy }}
+          {{ tp_form|crispy }}
+      </fieldset>
+      <div class="form-group">
+          <button  class="btn btn-outline-info" type="submit">Update</button>
+      </div>
+  </form>
+</div>
+
+
+{% endblock content %}

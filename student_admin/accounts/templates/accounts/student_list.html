@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'static2/css/bulma.min.css' %}">
+<link rel="stylesheet" href="{% static 'static2/css/style.css' %}">
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="{% static 'static2/js/init.js' %}"></script>
+<script src="{% static 'static2/js/slider.js' %}"></script>
+
+
+
+  {% if students %}
+    {% for users in students %}
+      {% if not users.user.is_superuser %}
+        <div class="box" style="max-width: 540px;">
+          <article class="media">
+            <div class="media-left">
+              <figure class="image is-64x64">
+                    <img src="{{ users.Profile_pic.url }}" width="60px" alt="Placeholder image">
+              </figure>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                <a href="{% url 'accounts:student_profile' users.user.username %}"><strong>{{ users.user.first_name }} {{ users.user.last_name }}</strong></a>
+                </p>
+                <p>Role : {{users.Role}}</p>
+                {% if users.Gender %}
+                  <p>Gender: {{users.Gender}}</p>
+                {% endif %}
+                {% if users.study_choice %}
+                  <p>Study: {{users.study_choice}}</p>
+                {% endif %}
+                {% if users.years_in_academy %}
+                  <p>Years in Academy: {{users.years_in_academy}}</p>
+                {% endif %}
+                <a href="{% url 'newconversation' users.user.username %}" class="button is-info">Send a message!</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+{% endblock content %}

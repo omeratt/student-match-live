@@ -1,0 +1,139 @@
+
+
+{% extends 'base.html' %}
+
+{%load static%}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'static2/css/bulma.min.css' %}">
+<link rel="stylesheet" href="{% static 'static2/css/style.css' %}">
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="{% static 'static2/js/init.js' %}"></script>
+<script src="{% static 'static2/js/slider.js' %}"></script>
+
+<div class="row">
+  <div class="col-md-6 ">
+
+ <div class="columns is-mobile" >
+  <div class="column is-offset-one-fifth">
+  <div class="columns is-mobile" >
+
+
+  <div class="column is-one-quarter" >
+  <aside class="menu">
+    <h1 class="title is-2">
+    Messages
+    </h1>
+  <ul style="overflow-y: scroll; height: 500px" class="menu-list">
+
+{% for message in messages %}
+
+<a class="{% if active_direct == message.user.username %}is-active{% endif %}"
+ href="{% url 'newconversation' message.user.username %}" style="background-color:white;">
+
+ <div class="box">
+<article class="media">
+    <div class="media-left">
+      <figure class="image is-64x64">
+          {% if message.user.student.Profile_pic %}
+          <img class="image" src="{{ message.user.student.Profile_pic.url }}" width="96x96">
+          {% else %}
+            <img class="image" src="{{ message.user.teacher.Profile_pic.url }}" width="96x96">
+          {% endif %}
+      </figure>
+    </div>
+    <div class="media-content">
+
+      <div class="content">
+        <p>
+        <strong>{{ message.user.first_name }} {{ message.user.last_name }}</strong>
+        </p>
+      </div>
+
+      <div class="content">
+        {% if message.unread %}
+        <p style="font-weight: bold; color: red;">
+          <i class="material-icons">mark_chat_unread</i> {{ message.unread }}
+        </p>
+        {% endif %}
+      </div>
+
+    </div>
+  </article>
+</div>
+</a>
+{% endfor %}
+
+  </ul>
+  </aside>
+<br>
+<a href="{% url 'usersearch' %}" class="button is-success">New message</a>
+
+</div>
+
+<div class="column">
+
+<div style="overflow-y: scroll; height: 500px">
+
+{% for direct in directs %}
+<div class="box">
+  <article class="media">
+    <div class="media-left">
+    </div>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong>{{ direct.sender.first_name }} {{ direct.sender.last_name }}</strong> <small>@{{ direct.sender.username }}</small> on: <strong><small>{{ direct.date|date:'N d G:i'}}</small></strong>
+        </p>
+        {{ direct.body }}
+      </div>
+    </div>
+  </article>
+</div>
+{% endfor %}
+
+
+</div>
+
+<form role="form" method="POST" action="{% url 'send_direct' %}">
+  {% csrf_token %}
+<article class="media">
+  <figure class="media-left">
+    <p class="">
+       {% if user.student.Profile_pic %}
+<img class="image" src="{{ user.student.Profile_pic.url }}" width="80px">
+      {% else %}
+      <img class="image" src="{{ user.teacher.Profile_pic.url }}" width="80">
+      {%endif%}
+    </p>
+  </figure>
+  <div class="media-content">
+        <input type="hidden" name="to_user" value="{{ active_direct }}">
+    <div class="field">
+      <p class="control">
+        <textarea class="textarea" name="body" placeholder="Add a comment..."></textarea>
+      </p>
+    </div>
+    <nav class="level">
+      <div class="level-left">
+        <div class="level-item">
+            <button type="submit" name="action" class="button is-info">Send</button>
+
+        </div>
+      </div>
+    </nav>
+  </div>
+</article>
+</form>
+
+</div>
+</div>
+
+  </div>
+</div>
+</div>
+</div>
+
+
+
+{% endblock %}

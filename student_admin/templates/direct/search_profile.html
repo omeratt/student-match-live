@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{%load static%}
+
+
+{% block search %}
+<link rel="stylesheet" href="{% static 'static2/css/bulma.min.css' %}">
+<link rel="stylesheet" href="{% static 'static2/css/style.css' %}">
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="{% static 'static2/js/init.js' %}"></script>
+<script src="{% static 'static2/js/slider.js' %}"></script>
+
+
+
+  <!-- <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+      <div class="input-group">
+          <input class="form-control" name="q" value="{{ request.GET.q }}" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
+          <div class="input-group-append">
+              <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+          </div>
+      </div>
+  </form> -->
+  <div class="columns is-mobile">
+   <div class="column is-offset-one-fifth">
+ <div class="field has-addons">
+<form >
+  <div class="control">
+    <input class="input is-large" name="q" type="text" placeholder="Search users..." value="{{ request.GET.q }}">
+  </div>
+  <div class="control">
+  	<button type="submit" class="button is-success">Search</button>
+  </div>
+  </form>
+</div>
+
+</div>
+</div>
+
+
+
+{% for user in users %}
+<!-- <div class="col-md-80"> -->
+<div class="box" style="max-width: 540px; max-height: 500px">
+  <article class="media">
+    <div class="media-left">
+      <figure class="">
+          {% if user.groups.all.0.name == 'studentg' %}
+            <img class="img-circle" style="width: 80px;" src="{{ user.student.Profile_pic.url }}" alt="Placeholder image">
+          {% else %}
+            <img class="img-circle" style="width: 80px;" src="{{user.teacher.Profile_pic.url}}" alt="Placeholder image">
+          {% endif %}
+      </figure>
+    </div>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          {% if user.groups.all.0.name == 'studentg' %}
+      <a href="{% url 'accounts:student_profile' user.username %}">{{ user.username}}</a>
+      <p>Role: {{user.student.Role}}</p>
+          {% else %}
+          <a href="{% url 'accounts:teacher_profile' user.username %}">{{ user.username}}</a>
+          <p> <strong>Role:   {{user.teacher.Role}}</strong> </p>
+          {% endif %}
+        </p>
+
+
+      </div>
+    </div>
+  </article>
+</div>
+<!-- </div> -->
+{% endfor %}
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% load bootstrap4 %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'static2/css/bulma.min.css' %}">
+<link rel="stylesheet" href="{% static 'static2/css/style.css' %}">
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="{% static 'static2/js/init.js' %}"></script>
+<script src="{% static 'static2/js/slider.js' %}"></script>
+<div class="row g-0">
+  <div class="col-md-4">
+    <img class="rounded-circle" width="270px" src="{{ user1.student.Profile_pic.url }}">
+  </div>
+  <div class="col-md-8">
+    <div class="box" style="max-width: 540px;">
+        <div class="media">
+          <div class="media-left">
+            {% if user1.first_name %}
+            <h1 class="card-title">{{ user1.first_name }} {{ user1.last_name }}</h5>
+                {% endif %}
+              {% if user1.email %}
+            <p class="card-text">Email : {{ user1.email }}</p>
+              {% endif %}
+            {% if user1.Gender %}
+            <p class="card-text">Gender : {{ user1.Gender }}</p>
+              {% endif %}
+            <p class="card-text">Role : Student</p>
+            {% if user1.years_in_academy %}
+            <p class="card-text">Years in academy : {{ user1.years_in_academy }}</p>
+              {% endif %}
+            {% if user1.description %}
+            <h3 class="card-text">Bio: </h4>
+              <h5>{{ user1.description }}</h5>
+              {% endif %}
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+        </div>
+        {% if user1.username == user.username %}
+          <a href="{% url 'accounts:edit_student' %}">  <button class="btn btn-outline-info" type="submit">Update</button ></a>
+        {% endif %}
+      </div>
+    </div>
+
+
+{% endblock %}

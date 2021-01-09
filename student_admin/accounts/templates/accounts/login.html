@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{% block content %}
+<div class="container">
+  <h1>Log In to Student-Match</h1>
+  <form method="POST">
+    {%csrf_token%}
+    {% bootstrap_form form %}
+
+    <ul>
+      <li>
+        <a href="{% url 'accounts:student_register' %}">Sign Up as Student</a>
+      </li>
+      <li>
+        <a href="{% url 'accounts:teacher_register' %}">Sign Up as Teacher</a>
+      </li>
+    </ul>
+
+    <input type="submit" class='btn btn-default' value="Login" style="background-color: #979EAA">
+  </form>
+</div>
+{% comment %} {% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Log In</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Login</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Need An Account? <a class="ml-2" href="{% url 'signup' %}">Sign Up Now</a>
+            </small>
+        </div>
+    </div> {% endcomment %}
+
+{% endblock content %}

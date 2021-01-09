@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+<!-- {% load bootstrap3 %} -->
+{% load bootstrap4 %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="row g-0">
+  <div class="col-md-4">
+    <img class="img-circle" width="270px" src="{{ user.profile.Profile_pic.url }}">
+  </div>
+  <div class="col-md-8">
+    <div class="card" style="max-width: 540px;">
+
+          <div class="card-body">
+            {% if user.first_name %}
+            <h1 class="card-title">{{ user.first_name }} {{ user.last_name }}</h5>
+                {% endif %}
+              {% if user.email %}
+            <p class="card-text">Email : {{ user.email }}</p>
+              {% endif %}
+            {% if user.profile.Gender %}
+            <p class="card-text">Gender : {{ user.profile.Gender }}</p>
+              {% endif %}
+            {% if user.profile.Role %}
+            <p class="card-text">Role : {{ user.profile.Role }}</p>
+              {% endif %}
+            {% if user.profile.years_in_academy %}
+            <p class="card-text">Years in academy : {{ user.profile.years_in_academy }}</p>
+              {% endif %}
+            {% if user.profile.description %}
+            <h3 class="card-text">Bio: </h4>
+              <h5>{{ user.profile.description }}</h5>
+              {% endif %}
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+          <a href="{% url 'accounts:edit_profile' %}">  <button class="btn btn-outline-info" type="submit">Update</button ></a>
+      </div>
+    </div>
+
+
+{% endblock %}
+{#
+<link href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css'>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script> #}
+{# <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> #}
+{#
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-7">
+            <div class="card p-2 text-center">
+                <div class="row">
+                    <div class="col-md-7 border-right no-gutters">
+                        <div class="py-3"><img src="{{ user.profile.Profile_pic.url }}" width="100" class="rounded-circle">
+                            <h4 class="text-secondary">{{user.first_name}} - {{user.last_name}}</h4>
+                            <div class="allergy"><span> {{ user.profile.Role }} </span></div>
+                            <div class="stats">
+                                <table class="table table-borderless">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex flex-column"> <span class="text-left head">Years in Academy</span> <span class="text-left bottom">{{user.profile.years_in_academy}}</span> </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex flex-column"> <span class="text-left head">Age</span> <span class="text-left bottom">22Y 4m</span> </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex flex-column"> <span class="text-left head">Weight</span> <span class="text-left bottom">168 lb</span> </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex flex-column"> <span class="text-left head">Height</span> <span class="text-left bottom">5'9"</span> </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="px-3"><button type="button" class="btn btn-primary btn-block">Send Message</button></div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="py-3">
+                            <div> <span class="d-block head">Home Address</span> <span class="bottom">123 Broadway,New York,NY,10012</span> </div>
+                            <div class="mt-4"> <span class="d-block head">Mobile Phone#</span> <span class="bottom">917 (543)-1234</span> </div>
+                            <div class="mt-4"> <span class="d-block head">Home Phone#</span> <span class="bottom">212 (213)-1234</span> </div>
+                            <div class="mt-4"> <span class="d-block head">Work Phone#</span> <span class="bottom">718 (702)-9876</span> </div>
+                            <div class="mt-4"> <span class="d-block head">Email</span> <span class="bottom">j.smith@gmail.com</span> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> #}

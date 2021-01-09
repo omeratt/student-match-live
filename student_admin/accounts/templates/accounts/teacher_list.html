@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'static2/css/bulma.min.css' %}">
+<link rel="stylesheet" href="{% static 'static2/css/style.css' %}">
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="{% static 'static2/js/init.js' %}"></script>
+<script src="{% static 'static2/js/slider.js' %}"></script>
+
+
+  <h1> <strong>Grab one teacher from the list and start lessons</strong> </h1>
+
+  {% if teachers %}
+    {% for users in teachers %}
+      {% if not users.user.is_superuser %}
+      <!-- <div class="col-md-8"> -->
+        <div class="box" style="max-width: 540px;">
+          <article class="media">
+            <div class="media-left">
+              <figure class="image is-64x64">
+                    <img src="{{ users.Profile_pic.url }}" width="60px" alt="Placeholder image">
+              </figure>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  {% if users.undergraduate %}
+                    <a href="{% url 'accounts:teacher_profile' users.user.username %}"><strong>{{ users.user.first_name }} {{ users.user.last_name }}, {{users.undergraduate}}</strong></a>
+                  {% else %}
+                  <a href="{% url 'accounts:teacher_profile' users.user.username %}">  <strong>{{ users.user.first_name }} {{ users.user.last_name }}</strong></a>
+                  {% endif %}
+                </p>
+                <p>Role : {{users.Role}}</p>
+                <p>Admin Rating: {{users.Admin_Rate}}/5</p>
+                <p>Gender: {{users.Gender}}</p>
+                <p></p>
+                <a href="{% url 'newconversation' users.user.username %}" class="button is-info">Send a message!</a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <!-- </div> -->
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+{% endblock content %}

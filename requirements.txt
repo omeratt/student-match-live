@@ -1,0 +1,46 @@
+asgiref @ file:///tmp/build/80754af9/asgiref_1605055780383/work
+beautifulsoup4==4.9.3
+bootstrap4==0.1.0
+boto3==1.16.51
+botocore==1.19.51
+certifi==2020.11.8
+cffi==1.14.4
+chardet==3.0.4
+cryptography==3.2.1
+defusedxml==0.6.0
+Django==3.0.3
+django-allauth==0.44.0
+django-bootstrap-form==3.4
+django-bootstrap3==14.2.0
+-e git+https://github.com/Eliraas1/Student-Match.git@c97cb644915a131903cf89693ae8775a2958d273#egg=django_bootstrap4&subdirectory=student_admin\django-bootstrap4-0.0.5
+django-braces==1.14.0
+django-crispy-forms==1.10.0
+django-filter==2.4.0
+django-storages==1.11.1
+django-utils-six==2.0
+djangorestframework==3.12.2
+gunicorn==20.0.4
+idna==2.10
+image==1.5.33
+Jinja2==2.11.2
+jmespath==0.10.0
+license==0.1a3
+makefile==1.1.0
+MarkupSafe==1.1.1
+misaka==2.1.1
+oauthlib==3.1.0
+Pillow==8.0.1
+pycparser==2.20
+PyJWT==1.7.1
+python-dateutil==2.8.1
+python3-openid==3.2.0
+pytz==2020.1
+requests==2.25.0
+requests-oauthlib==1.3.0
+s3transfer==0.3.3
+six==1.15.0
+soupsieve==2.1
+sqlparse @ file:///tmp/build/80754af9/sqlparse_1602184451250/work
+urllib3==1.26.2
+whitenoise==5.2.0
+wincertstore==0.2

@@ -1,0 +1,56 @@
+
+body{
+  background-color: #282C34;
+  color: #979EAA;
+}
+
+
+
+legend{
+  color :#979EAA;
+}
+/* .form-control{
+  border:0px solid #E06C75;
+  width: 20%;
+  height: auto;
+  text-align: center;
+  margin: auto;
+  padding: 5px;
+} */
+
+
+
+/* body{
+  font-family: 'Roboto Condensed', sans-serif;
+  /* text-align: center; */
+  /* background: #21252B; */
+  /* color: #ABB2BF; */
+  /* padding: 20px; */
+/* } */
+.form-group-profile{
+  width: 40%;
+}
+
+/* #headline {
+  padding-top: 57px;
+  color: #E06C75;
+} */
+
+/* .form-control{
+  border:0px solid #E06C75;
+  width: 20%;
+  height: auto;
+  text-align: center;
+  padding: 5px;
+  margin: auto;
+} */
+/* #submit{
+  text-align: center;
+  color: #E06C75;
+  background-color: #ABB2BF;
+  border:2px solid #E06C75;
+  border-radius: 20px;
+  height: 45px;
+  width: 85px;
+  font-size: 1.2em;
+} */

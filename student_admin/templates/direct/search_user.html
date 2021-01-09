@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{%load static%}
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'static2/css/bulma.min.css' %}">
+<link rel="stylesheet" href="{% static 'static2/css/style.css' %}">
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="{% static 'static2/js/init.js' %}"></script>
+<script src="{% static 'static2/js/slider.js' %}"></script>
+ <div class="columns is-mobile">
+  <div class="column is-offset-one-fifth">
+
+
+<div class="field has-addons">
+<form>
+  <div class="control">
+    <input class="input is-large" name="q" type="text" placeholder="Search users..." value="{{ request.GET.q }}">
+  </div>
+  <div class="control">
+  	<button type="submit" class="button is-success">Search</button>
+  </div>
+  </form>
+</div>
+
+
+</div>
+</div>
+
+<div class="column is-one-quarter">
+
+{% for user in users %}
+<div class="box" style="max-width: 540px;">
+  <article class="media">
+    <div class="media-left">
+      <figure class="">
+        {% if user.groups.all.0.name == 'studentg' %}
+          <img class="img-circle" style="width: 80px;" src="{{ user.student.Profile_pic.url }}" alt="Placeholder image">
+        {% else %}
+          <img class="img-circle" style="width: 80px;" src="{{user.teacher.Profile_pic.url}}" alt="Placeholder image">
+        {% endif %}
+      </figure>
+    </div>
+    <div class="media-content">
+      <div class="content">
+        <p>
+        <strong>{{ user.profile.first_name }} {{ user.profile.last_name }}</strong><small>{{ user.username }}</small>
+        </p>
+        <a href="{% url 'newconversation' user.username %}" class="button is-info">Send a message!</a>
+      </div>
+    </div>
+  </article>
+</div>
+{% endfor %}
+
+
+
+</div>
+
+{% endblock %}
