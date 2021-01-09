@@ -74,10 +74,11 @@
                                 Social
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
+                            {% if user.is_authenticated %}
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="{% url 'groups:all' %}">Groups</a>
-                                    {% if user.is_authenticated %}
+
                                     <a class="nav-link" href="{% url 'inbox' %}">Messenger</a>
                                     <a class="nav-link" href="{% url 'accounts:teacher_list' %}">Teachers</a>
                                     <a class="nav-link" href="{% url 'accounts:student_list' %}">Students</a>
@@ -95,10 +96,6 @@
                                 Search Profiles
                             </a>
                             {%  else %}
-                            <a class="nav-link" href="{% url 'ProfileSearch' %}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Search Profiles
-                            </a>
                             <a class="nav-link" href="{% url 'accounts:student_register' %}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Students Sign Up
